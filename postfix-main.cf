@@ -1,0 +1,7 @@
+myhostname = mail.temphook.lol
+mydomain = temphook.lol
+myorigin = $mydomain
+inet_interfaces = all
+mydestination = $myhostname, localhost.$mydomain, localhost, $mydomain
+transport_maps = hash:/etc/postfix/transport
+local_recipient_maps =

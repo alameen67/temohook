@@ -1,0 +1,8 @@
+name = "temphook"
+compatibility_date = "2024-03-20"
+pages_build_output_dir = ".vercel/output/static"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "temphook_d1"
+database_id = "00a32b40-bc1b-4ba7-a3e0-383602f7846f"
