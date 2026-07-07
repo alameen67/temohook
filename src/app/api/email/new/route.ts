@@ -15,7 +15,7 @@ export async function POST(req: Request) {
     
     let name = '';
     try {
-      const body = await req.json();
+      const body: any = await req.json();
       if (body.customName && /^[a-zA-Z0-9-]+$/.test(body.customName)) {
         name = body.customName.toLowerCase();
       }
