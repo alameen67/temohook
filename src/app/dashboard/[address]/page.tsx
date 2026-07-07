@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, use } from 'react';
-import { Copy, QrCode, Wifi, WifiOff, Inbox as InboxIcon, ChevronRight } from 'lucide-react';
+import { Copy, QrCode, Wifi, WifiOff, Inbox as InboxIcon, ChevronRight, Mail } from 'lucide-react';
 import DOMPurify from 'isomorphic-dompurify';
 import { formatDistanceToNow } from 'date-fns';
 
@@ -27,7 +27,7 @@ export default function DashboardPage({ params }: { params: Promise<{ address: s
     const fetchMessages = async () => {
       try {
         const res = await fetch(`/api/inbox/${address}`);
-        const data = await res.json();
+        const data: any = await res.json();
         if (data.messages) {
           setMessages(data.messages);
         }
@@ -52,7 +52,7 @@ export default function DashboardPage({ params }: { params: Promise<{ address: s
   const loadMessageContent = async (id: string) => {
     try {
       const res = await fetch(`/api/message/${id}`);
-      const data = await res.json();
+      const data: any = await res.json();
       setSelectedMessage(data);
     } catch (e) {
       console.error(e);
