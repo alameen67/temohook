@@ -28,7 +28,7 @@ export default {
         const attachments = email.attachments.map(att => ({
           filename: att.filename || 'unknown',
           contentType: att.mimeType,
-          size: att.content?.byteLength || 0,
+          size: typeof att.content === 'string' ? att.content.length : (att.content?.byteLength || 0),
         }));
         
         const headers: Record<string, string> = {};
