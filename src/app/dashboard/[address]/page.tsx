@@ -4,7 +4,7 @@ export const runtime = 'edge';
 
 import { useState, useEffect, use } from 'react';
 import { Copy, QrCode, Wifi, WifiOff, Inbox as InboxIcon, ChevronRight, Mail } from 'lucide-react';
-import DOMPurify from 'isomorphic-dompurify';
+
 import { formatDistanceToNow } from 'date-fns';
 
 type Message = {
@@ -162,7 +162,7 @@ export default function DashboardPage({ params }: { params: Promise<{ address: s
                 {selectedMessage.html ? (
                   <div 
                     className="prose prose-invert max-w-none prose-a:text-primary-light"
-                    dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(selectedMessage.html) }}
+                    dangerouslySetInnerHTML={{ __html: selectedMessage.html }}
                   />
                 ) : (
                   <pre className="whitespace-pre-wrap font-sans text-foreground/80">
