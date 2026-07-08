@@ -16,7 +16,7 @@ export default function Home() {
       const data: any = await res.json();
       if (!res.ok) throw new Error(data.error || 'Failed to generate');
       router.push(`/dashboard/${data.address}`);
-    } catch (error) {
+    } catch (error: any) {
       console.error(error);
       alert(String(error) + (error.message ? " MSG: " + error.message : " NO MSG"));
       setLoading(false);
