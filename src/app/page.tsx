@@ -13,12 +13,12 @@ export default function Home() {
     setLoading(true);
     try {
       const res = await fetch('/api/email/new', { method: 'POST' });
-      if (!res.ok) throw new Error('Failed to generate');
       const data: any = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Failed to generate');
       router.push(`/dashboard/${data.address}`);
     } catch (error) {
       console.error(error);
-      alert('Failed to generate email');
+      alert(String(error) + (error.message ? " MSG: " + error.message : " NO MSG"));
       setLoading(false);
     }
   };
