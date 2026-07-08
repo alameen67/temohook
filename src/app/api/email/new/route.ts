@@ -49,6 +49,6 @@ export async function POST(req: Request) {
     return NextResponse.json(newInbox);
   } catch (error) {
     console.error('Error generating email:', error);
-    return NextResponse.json({ error: 'Failed to generate email' }, { status: 500 });
+    return NextResponse.json({ error: (error as Error).message || 'Failed to generate email' }, { status: 500 });
   }
 }
