@@ -2,9 +2,8 @@ import { NextResponse } from 'next/server';
 import { getDb } from '@/db';
 import { inboxes, messages } from '@/db/schema';
 import { eq, desc } from 'drizzle-orm';
-import { getRequestContext } from '@cloudflare/next-on-pages';
 
-export const runtime = 'edge';
+
 
 export async function GET(
   req: Request,
@@ -12,7 +11,7 @@ export async function GET(
 ) {
   try {
     const { address } = await params;
-    const db = getDb(getRequestContext().env);
+    const db = getDb();
 
     const inbox = await db.select().from(inboxes).where(eq(inboxes.address, address)).get();
 

@@ -4,13 +4,13 @@ import { inboxes } from '@/db/schema';
 import { generateMemorableName } from '@/lib/nameGenerator';
 import { addHours } from 'date-fns';
 import { eq } from 'drizzle-orm';
-import { getRequestContext } from '@cloudflare/next-on-pages';
 
-export const runtime = 'edge';
+
+
 
 export async function POST(req: Request) {
   try {
-    const db = getDb(getRequestContext().env);
+    const db = getDb();
     const domain = process.env.NEXT_PUBLIC_DOMAIN || 'temphook.lol';
     
     let name = '';

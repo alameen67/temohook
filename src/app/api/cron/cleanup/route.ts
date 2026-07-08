@@ -2,9 +2,9 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getDb } from '@/db';
 import { inboxes } from '@/db/schema';
 import { lt } from 'drizzle-orm';
-import { getRequestContext } from '@cloudflare/next-on-pages';
 
-export const runtime = 'edge';
+
+
 
 export async function GET(req: NextRequest) {
   try {
@@ -16,7 +16,7 @@ export async function GET(req: NextRequest) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    const db = getDb(getRequestContext().env);
+    const db = getDb();
     
     // Delete all inboxes where expiresAt is in the past
     const result = await db.delete(inboxes).where(lt(inboxes.expiresAt, new Date())).returning();

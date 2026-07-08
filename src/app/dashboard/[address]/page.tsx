@@ -1,6 +1,5 @@
 'use client';
 
-export const runtime = 'edge';
 
 import { useState, useEffect, use } from 'react';
 import { Copy, QrCode, Wifi, WifiOff, Inbox as InboxIcon, ChevronRight, Mail } from 'lucide-react';
