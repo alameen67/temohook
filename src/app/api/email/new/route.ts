@@ -49,6 +49,6 @@ export async function POST(req: Request) {
     return NextResponse.json(newInbox);
   } catch (error) {
     console.error('Error generating email:', error);
-    return NextResponse.json({ error: String(error) + " | " + JSON.stringify(error, Object.getOwnPropertyNames(error)) }, { status: 500 });
+    return NextResponse.json({ error: String(error) }, { status: 500 });
   }
 }
