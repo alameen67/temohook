@@ -14,7 +14,7 @@ export default function Home() {
     try {
       const res = await fetch('/api/email/new', { method: 'POST' });
       if (!res.ok) throw new Error('Failed to generate');
-      const data = await res.json();
+      const data: any = await res.json();
       router.push(`/dashboard/${data.address}`);
     } catch (error) {
       console.error(error);
